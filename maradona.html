@@ -3,6 +3,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+
 <title>CTC Lineal General - Corredor Unificado</title>
 
 <style>
@@ -152,7 +153,7 @@ transform: rotate(-270deg);
 
     .cd-via-panelB { position: absolute; top: 655px; left: 730px; background-color: #7D5BA6; border: 2px solid #777; width: 140px; display: grid; grid-template-columns: 1fr 1fr; padding: 3px; z-index: 50; }
     .cd-via-panelN { position: absolute; top: 655px; left: 1795px; background-color: #41B883; border: 1px solid #777; width: 140px; display: grid; grid-template-columns: 1fr 1fr; padding: 3px; z-index: 50; }
-    .cd-via-panelR { position: absolute; top: 677px; left: 2370px; background-color: #41B883; border: 1px solid #777; width: 120px; display: grid; grid-template-columns: 1fr 1fr; padding: 3px; z-index: 50; }
+    .cd-via-panelR { position: absolute; top: 677px; left: 2360px; background-color: #41B883; border: 1px solid #777; width: 120px; display: grid; grid-template-columns: 1fr 1fr; padding: 3px; z-index: 50; }
     .cd-via-panelVL { position: absolute; top: 677px; left: 2820px; background-color: #4682B4; border: 1px solid #777; width: 120px; display: grid; grid-template-columns: 1fr 1fr; padding: 3px; z-index: 50; }
     .cd-via-panelO { position: absolute; top: 655px; left: 3540px; background-color: #4682B4; border: 1px solid #777; width: 140px; display: grid; grid-template-columns: 1fr 1fr; padding: 3px; z-index: 50; }
     .cd-via-panelLL { position: absolute; top: 677px; left: 4050px; background-color: #4682B4; border: 1px solid #777; width: 120px; display: grid; grid-template-columns: 1fr 1fr; padding: 3px; z-index: 50; }
@@ -199,12 +200,11 @@ transform: rotate(-270deg);
     .pan-etiqueta { position: absolute; background-color: black; color: white; border: 1px solid white; padding: 2px 6px; font-size: 11px; transform: rotate(-90deg); transform-origin: left bottom; z-index: 25; }
     .ind-pan-container { position: absolute; width: 30px; height: 30px; z-index: 30; cursor: pointer; }
     .ind-alto { position: absolute; left: 0; bottom: 10px; width: 10px; height: 25px; background-color: #331100; border: 1px solid #000; }
-    .ind-alto.active { background-color: #FFFF00; box-shadow: 0 0 10px #FF0; }
+    .ind-alto.active { background-color: #FF0000; box-shadow: 0 0 10px #FF0; }
     .ind-bajo { position: absolute; left: 0; bottom: 0; width: 30px; height: 10px; background-color: #330000; border: 1px solid #000; }
-    .ind-bajo.active { background-color: #FF0000; box-shadow: 0 0 10px #F00; }
-
-    .pan-amarillo-on { background-color: #FFFF00 !important; box-shadow: 0 0 15px #FFFF00 !important; border-color: #FFFF00 !important; }
-    .pan-rojo-on { background-color: #FF0000 !important; box-shadow: 0 0 15px #FF0000 !important; border-color: #FF0000 !important; }
+    .ind-bajo.active { background-color: #FFFF00; box-shadow: 0 0 10px #F00; }
+    .pan-amarillo-on { background-color: #FF0000 !important; box-shadow: 0 0 15px #FF0000 !important; border-color: #FF0000 !important; }
+    .pan-rojo-on { background-color: #FFFF00 !important; box-shadow: 0 0 15px #FFFF00 !important; border-color: #FFFF00 !important; }
     .indicacion { background: #b50b6e; border: 2px solid white; color: white; padding: 2px 10px; font-weight: bold; position: absolute; font-size: 13px; z-index: 20; letter-spacing: 1px;box-shadow: 4px 4px 0px #000; }
 
 /* EL PARAGOLPE DIBUJADO (FLECHA ROJA + BARRA) */
@@ -734,11 +734,11 @@ z-index: 9999 !important;
     <div id="c103" class="via v-arriba" data-nombre="CDV103" style="top: 850px; left: 250px; width: 195px;"></div>
     <div id="c105" class="via v-arriba" data-nombre="CDV105" style="top: 850px; left: 450px; width: 95px;"></div>
     <div id="c107" class="via v-arriba" data-nombre="CDV107" style="top: 850px; left: 550px; width: 145px;"></div>
-    <div id="a-Bel" class="via v-arriba" data-nombre="CDVA-BEL" style="top: 850px; left: 700px; width: 195px;"></div>
+    <div id="ca-bel" class="via v-arriba" data-nombre="CDVA-BEL" style="top: 850px; left: 700px; width: 195px;"></div>
     <div id="w1plus" class="via v-arriba" data-nombre="" style="top: 850px; left: 900px; width: 135px;"></div>
     <div id="w1pm" class="via v-arriba" data-nombre="1" style="top: 850px; left: 1035px; width: 60px;"></div>
     <div id="w1minus" class="via via-fantasma v-arriba" data-nombre="" style="top: 879px; left: 982px; width: 65px; height: 10px; clip-path: polygon(0% 0%, 85% 0%, 100% 100%, 15% 100%);transform: rotate(-45deg);"></div>
-    <div id="b-Bel" class="via v-arriba" data-nombre="CVDB-BEL" style="top: 850px; left: 1100px; width: 145px;"></div>
+    <div id="cb-bel" class="via v-arriba" data-nombre="CVDB-BEL" style="top: 850px; left: 1100px; width: 145px;"></div>
     <div id="c113" class="via v-arriba" data-nombre="CVD113" style="top: 850px; left: 1250px; width: 195px;"></div>
     
     <div id="c14" class="via v-abajo" data-nombre="CVLD14" style="top: 950px; left: 60px; width: 95px;"></div>
@@ -746,8 +746,8 @@ z-index: 9999 !important;
     <div id="c106" class="via v-abajo" data-nombre="CDV106" style="top: 950px; left: 250px; width: 195px;"></div>
  
     <div id="c108" class="via v-abajo" data-nombre="CDV108" style="top: 950px; left: 450px; width: 145px;"></div>
-    <div id="y-Bel" class="via v-abajo" data-nombre="CDVY-BEL" style="top: 950px; left: 600px; width: 115px;"></div>
-    <div id="z-Bel" class="via v-abajo" data-nombre="CDVZ-BEL" style="top: 950px; left: 720px; width: 175px;"></div>
+    <div id="cy-bel" class="via v-abajo" data-nombre="CDVY-BEL" style="top: 950px; left: 600px; width: 115px;"></div>
+    <div id="cz-bel" class="via v-abajo" data-nombre="CDVZ-BEL" style="top: 950px; left: 720px; width: 175px;"></div>
     <div id="w2pm" class="via v-abajo" data-nombre="2" style="top: 950px; left: 900px; width: 50px;"></div>
     <div id="w2plus" class="via v-abajo" data-nombre="" style="top: 950px; left: 950px; width: 210px;"></div>
     <div id="w2minus" class="via via-fantasma v-arriba" data-nombre="" style="top: 921px; left: 940px; width: 65px; height: 10px;  clip-path: polygon(0% 0%, 85% 0%, 100% 100%, 15% 100%);transform: rotate(-45deg);"></div>
@@ -930,15 +930,18 @@ z-index: 9999 !important;
 <div class="s-nombre-real">13A</div><div class="s-grafico-real" style="transform: scaleX(-1); display: flex; justify-content: center;"><div class="t-girada">T</div><div class="curva-led"></div></div></div>
 
 
-<div class="nombre-cambio" style="top: 827px; left: 1680px;">w11</div>
-<div class="nombre-cambio" style="top: 970px; left: 1620px;">w10</div>
-<div class="nombre-cambio" style="top: 827px; left: 2050px;">w15</div>
-<div class="nombre-cambio" style="top: 970px; left: 1980px;">w12</div>
+<div class="nombre-cambio" style="top: 827px; left: 1670px;">w11</div>
+<div class="nombre-cambio" style="top: 970px; left: 1585px;">w10</div>
+<div class="nombre-cambio" style="top: 827px; left: 2060px;">w15</div>
+<div class="nombre-cambio" style="top: 970px; left: 1970px;">w12</div>
 
 <div style="position: absolute; top: 848px; left: 1673px; text-align: center;"><div id="EW11" class="led-enclav enclav-cambio"></div></div>
 <div style="position: absolute; top: 947px; left: 1575px; text-align: center;"><div id="EW10" class="led-enclav enclav-cambio"></div></div>
 <div style="position: absolute; top: 848px; left: 2060px; text-align: center;"><div id="EW15" class="led-enclav enclav-cambio"></div></div>
 <div style="position: absolute; top: 947px; left: 1962px; text-align: center;"><div id="EW12" class="led-enclav enclav-cambio"></div></div>
+<div style="position: absolute; top: 848px; left: 2355px; text-align: center;"><div id="EW123" class="led-enclav enclav-cambio"></div></div>
+<div style="position: absolute; top: 947px; left: 2262px; text-align: center;"><div id="EW124" class="led-enclav enclav-cambio"></div></div>
+
 
 
 <div style="position: absolute; top: 797px; left: 1530px; text-align: center;"><div id="ESAN" class="led-enclav enclav-senal"></div></div>
@@ -1089,7 +1092,8 @@ z-index: 9999 !important;
 <div style="position: absolute; top: 995px; left: 3880px; text-align: center;"><div id="ESZO" class="led-enclav enclav-senal"></div></div>
 <div style="position: absolute; top: 995px; left: 3485px; text-align: center;"><div id="ESYO" class="led-enclav enclav-senal"></div></div>
 
-
+<div style="position: absolute; top: 947px; left: 2938px; text-align: center;"><div id="EW132" class="led-enclav enclav-cambio"></div></div>
+<div style="position: absolute; top: 848px; left: 3030px; text-align: center;"><div id="EW131" class="led-enclav enclav-cambio"></div></div>
 <div style="position: absolute; top: 947px; left: 3372px; text-align: center;"><div id="EW20" class="led-enclav enclav-cambio"></div></div>
 <div style="position: absolute; top: 848px; left: 3468px; text-align: center;"><div id="EW21" class="led-enclav enclav-cambio"></div></div>
 <div style="position: absolute; top: 848px; left: 3835px; text-align: center;"><div id="EW25" class="led-enclav enclav-cambio"></div></div>
@@ -1098,9 +1102,9 @@ z-index: 9999 !important;
 
 
 
-    <div class="nombre-cambio" style="top: 827px; left: 3451px;">w21</div>
-    <div class="nombre-cambio" style="top: 970px; left: 3393px;">w20</div>
-    <div class="nombre-cambio" style="top: 827px; left: 3823px;">w25</div>
+    <div class="nombre-cambio" style="top: 827px; left: 3463px;">w21</div>
+    <div class="nombre-cambio" style="top: 970px; left: 3378px;">w20</div>
+    <div class="nombre-cambio" style="top: 827px; left: 3825px;">w25</div>
     <div class="nombre-cambio" style="top: 970px; left: 3743px;">w24</div>
 
 
@@ -1741,8 +1745,10 @@ z-index: 9999 !important;
    <div class="paragolpe-diseno" style="top: 745px; left: 7200px; transform: rotate(180deg);"><div class="union"></div></div>
 
 
- <div class="pan-etiqueta" style="top: 705px; left: 4550px;">ALVEAR</div><div class="pan-rect" style="top: 650px; left: 4530px;"></div>
-    <div class="ind-pan-container" style="top: 1060px; left: 4530px;"><div id="B_ALV_A" class="ind-alto active"></div><div id="B_ALV_B" class="ind-bajo"></div></div>
+
+
+<div class="pan-etiqueta" style="top: 705px; left: 4550px;">ALVEAR(M)</div><div class="pan-rect" style="top: 650px; left: 4530px;"></div>
+    <div class="ind-pan-container" style="top: 1060px; left: 4530px;"><div id="B_AVE_A" class="ind-alto active"></div><div id="B_AVE_B" class="ind-bajo"></div></div>
 
     <div class="pan-etiqueta" style="top: 730px; left: 4685px;">SARMIENTO</div><div class="pan-rect" style="top: 650px; left: 4665px;"></div>
     <div class="ind-pan-container" style="top: 1060px; left: 4665px;"><div id="B_SAR_A" class="ind-alto active"></div><div id="B_SAR_B" class="ind-bajo"></div></div>
@@ -2130,6 +2136,11 @@ z-index: 9999 !important;
 
 <div style="position: absolute; top: 995px; left: 5375px; text-align: center;"><div class="label-enc"></div><div id="ESWI" class="led-enclav"></div></div>
 
+<div style="position: absolute; top: 948px; left: 4550px; text-align: center;"><div id="EW152m" class="led-enclav enclav-cambio"></div></div>
+
+<div style="position: absolute; top: 847px; left: 4635px; text-align: center;"><div id="EW151m" class="led-enclav enclav-cambio"></div></div>
+
+
 <div style="position: absolute; top: 948px; left: 5270px; text-align: center;"><div id="EW30" class="led-enclav enclav-cambio"></div></div>
 
 <div style="position: absolute; top: 847px; left: 5365px; text-align: center;"><div id="EW31" class="led-enclav enclav-cambio"></div></div>
@@ -2140,10 +2151,10 @@ z-index: 9999 !important;
 
 
 
-    <div class="nombre-cambio" style="top: 827px; left: 5353px;">w31</div>
+    <div class="nombre-cambio" style="top: 827px; left: 5358px;">w31</div>
     <div class="nombre-cambio" style="top: 970px; left: 5273px;">w30</div>
-    <div class="nombre-cambio" style="top: 827px; left: 5693px;">w33</div>
-    <div class="nombre-cambio" style="top: 970px; left: 5623px;">w32</div>
+    <div class="nombre-cambio" style="top: 827px; left: 5700px;">w33</div>
+    <div class="nombre-cambio" style="top: 970px; left: 5618px;">w32</div>
 
 
 <div class="nombre-cambio" style="top: 970px; left: 6480px;">w40</div>
@@ -2249,18 +2260,18 @@ z-index: 9999 !important;
 
 
 
-    <div class="nombre-cambio" style="top: 827px; left: 8700px;">w61</div>
-    <div class="nombre-cambio" style="top: 970px; left:8653px;">w60</div>
+    <div class="nombre-cambio" style="top: 827px; left: 8705px;">w61</div>
+    <div class="nombre-cambio" style="top: 970px; left:8630px;">w60</div>
     <div class="nombre-cambio" style="top: 827px; left: 9030px;">w65</div>
-    <div class="nombre-cambio" style="top: 970px; left: 8962px;">w62</div>
+    <div class="nombre-cambio" style="top: 970px; left: 8955px;">w62</div>
 
 
-<div class="nombre-cambio" style="top: 827px; left: 10600px;">w73</div>
+<div class="nombre-cambio" style="top: 827px; left: 10625px;">w73</div>
 <div class="nombre-cambio" style="top: 925px; left: 10370px;">w72</div>
-<div class="nombre-cambio" style="top: 827px; left: 10050px;">W71</div>
-<div class="nombre-cambio" style="top: 970px; left: 10100px;">w70</div>
-<div class="nombre-cambio" style="top: 970px; left: 10550px;">w74</div>
-<div class="nombre-cambio" style="top: 1070px; left:10440px;">w75</div>
+<div class="nombre-cambio" style="top: 827px; left: 10045px;">W71</div>
+<div class="nombre-cambio" style="top: 970px; left: 10130px;">w70</div>
+<div class="nombre-cambio" style="top: 970px; left: 10530px;">w74</div>
+<div class="nombre-cambio" style="top: 1050px; left:10430px;">w75</div>
 
 
 <div style="position: absolute; top: 797px; left: 9995px; text-align: center;"><div class="label-enc"></div><div id="ESAT" class="led-enclav"></div></div>
@@ -3361,8 +3372,11 @@ function procesarEnclavamientosCambios(datosEnclav) {
         { ids: ["EW1", "EW2"],   claves: ["EW1", "ew1", "EW2", "ew2"] },
         { ids: ["EW10", "EW11"],   claves: ["EW10", "ew10", "EW11", "ew11", "W10", "W11"] },
         { ids: ["EW12", "EW15"],   claves: ["EW12", "ew12", "EW15", "ew15", "W12", "W15"] },
+        { ids: ["EW124", "EW123"],   claves: ["EW124", "ew124", "EW123", "ew123", "W124", "W123"] },
         { ids: ["EW20", "EW21"],   claves: ["EW20", "ew20", "EW21", "ew21", "W20", "W21"] },
         { ids: ["EW24", "EW25"],   claves: ["EW24", "ew24", "EW25", "ew25", "W24", "W25"] },
+        { ids: ["EW132", "EW131"],   claves: ["EW132", "ew132", "EW131", "ew131", "W132", "W131"] },
+        { ids: ["EW152m", "EW151m"],   claves: ["EW152m", "ew152m", "EW151m", "ew151m", "W152m", "W151m"] },
         { ids: ["EW30", "EW31"],   claves: ["EW30", "ew30", "EW31", "ew31", "W30", "W31"] },
         { ids: ["EW32", "EW33"],   claves: ["EW32", "ew32", "EW33", "ew33", "W32", "W33"] },
         { ids: ["EW60", "EW61"],   claves: ["EW60", "ew60", "EW61", "ew61", "W60", "W61"] },
@@ -3489,6 +3503,7 @@ var panesGeneral = {
     "ROMA":        { pos: 0, av: 1, idAlto: 'B_ROM_A', idBajo: 'B_ROM_B' },
     "DIAZ VELEZ":  { pos: 0, av: 1, idAlto: 'B_DVE_A', idBajo: 'B_DVE_B' },
     "PACHECO":     { pos: 0, av: 1, idAlto: 'B_PAC_A', idBajo: 'B_PAC_B' },
+    "ALVEAR(M)":   { pos: 0, av: 1, idAlto: 'B_AVE_A', idBajo: 'B_AVE_B' },
     "SARMIENTO":   { pos: 0, av: 1, idAlto: 'B_SAR_A', idBajo: 'B_SAR_B' },
     "PERU":        { pos: 0, av: 1, idAlto: 'B_PER_A', idBajo: 'B_PER_B' },
     "ALEM":        { pos: 0, av: 1, idAlto: 'B_ALE_A', idBajo: 'B_ALE_B' },
@@ -3497,7 +3512,7 @@ var panesGeneral = {
     "GUIDO SPANO": { pos: 0, av: 1, idAlto: 'B_GSP_A', idBajo: 'B_GSP_B' },
     "MAIPU":       { pos: 0, av: 1, idAlto: 'B_MAI_A', idBajo: 'B_MAI_B' },
     "9 DE JULIO":  { pos: 0, av: 1, idAlto: 'B_9DJ_A', idBajo: 'B_9DJ_B' },
-    "ALVEAR":      { pos: 0, av: 1, idAlto: 'B_AVR_A', idBajo: 'B_AVR_B' },
+    "ALVEAR":      { pos: 0, av: 1, idAlto: 'B_AAR_A', idBajo: 'B_AAR_B' },
     "RIVADAVIA":   { pos: 0, av: 1, idAlto: 'B_RIV_A', idBajo: 'B_RIV_B' },
     "MARABOTTO":   { pos: 0, av: 1, idAlto: 'B_MAR_A', idBajo: 'B_MAR_B' }
 };
@@ -3531,10 +3546,10 @@ var panesGeneral = {
                     var el = document.getElementById(id) || document.getElementById(idL) || document.getElementById(id.toUpperCase()) || document.getElementById("c" + idL) || document.getElementById("cdv" + idL) || document.getElementById("CDV" + id.toUpperCase());
                     
                     if (!el) {
-                        if (idL === "a-bel" || idL === "a-belgrano") el = document.getElementById("a-Bel");
-                        if (idL === "b-bel" || idL === "b-belgrano") el = document.getElementById("b-Bel");
-                        if (idL === "y-bel" || idL === "y-belgrano") el = document.getElementById("y-Bel");
-                        if (idL === "z-bel" || idL === "z-belgrano") el = document.getElementById("z-Bel");
+                        if (idL === "ca-bel" || idL === "a-belgrano") el = document.getElementById("a-Bel");
+                        if (idL === "cb-bel" || idL === "b-belgrano") el = document.getElementById("b-Bel");
+                        if (idL === "cy-bel" || idL === "y-belgrano") el = document.getElementById("y-Bel");
+                        if (idL === "cz-bel" || idL === "z-belgrano") el = document.getElementById("z-Bel");
                         if (idL === "cvt7") el = document.getElementById("CVT7");
                     }
                     
