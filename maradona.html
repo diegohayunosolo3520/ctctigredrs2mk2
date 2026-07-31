@@ -3546,10 +3546,10 @@ var panesGeneral = {
                     var el = document.getElementById(id) || document.getElementById(idL) || document.getElementById(id.toUpperCase()) || document.getElementById("c" + idL) || document.getElementById("cdv" + idL) || document.getElementById("CDV" + id.toUpperCase());
                     
                     if (!el) {
-                        if (idL === "ca-bel" || idL === "a-belgrano") el = document.getElementById("a-Bel");
-                        if (idL === "cb-bel" || idL === "b-belgrano") el = document.getElementById("b-Bel");
-                        if (idL === "cy-bel" || idL === "y-belgrano") el = document.getElementById("y-Bel");
-                        if (idL === "cz-bel" || idL === "z-belgrano") el = document.getElementById("z-Bel");
+                        if (idL === "ca-bel" || idL === "a-belgrano") el = document.getElementById("ca-bel");
+                        if (idL === "cb-bel" || idL === "b-belgrano") el = document.getElementById("cb-bel");
+                        if (idL === "cy-bel" || idL === "y-belgrano") el = document.getElementById("cy-bel");
+                        if (idL === "cz-bel" || idL === "z-belgrano") el = document.getElementById("cz-bel");
                         if (idL === "cvt7") el = document.getElementById("CVT7");
                     }
                     
@@ -4478,35 +4478,56 @@ pW();
 
 
  // 3. SISTEMA DE VÍAS (CONECTADO A FIREBASE)
-    function setEstadoCircuito(idCircuito, numEstado) {
-    const el = document.getElementById(idCircuito);
+ // --- CONTROL CENTRALIZADO DE ESTADOS DE CIRCUITO (OPTIMIZADO SIN PARPADEO) ---
+function setEstadoCircuito(idElemento, estadoValor) {
+    var el = document.getElementById(idElemento);
     if (!el) return;
 
-    const estados = { 
-        3: 'via-fantasma', 0: 'libreconI', 1: 'ocupado', 2: 'libresinI', 
-        4: 'maniobra', 5: 'libredeslizamiento', 6: 'zonasinseñalizar',
-        7: 'CVMXCS', 8: 'CVCRAS', 9: 'BVACVSD'
-    };
-
-    // Mantenemos las clases estructurales críticas
-    const esArriba = el.classList.contains('v-arriba');
-    const esAbajo = el.classList.contains('v-abajo');
-    const esDiagonal = el.classList.contains('diagonal');
-    const esCambioSiemens = el.classList.contains('cambio-siemens'); // Nueva clase
+    // Convertir el nuevo estado a un string normalizado
+    var nuevoEstadoStr = String(estadoValor);
     
-    // Construimos la clase base preservando la estructura
-    let nuevasClases = 'via';
-    if (esArriba) nuevasClases += ' v-arriba';
-    if (esAbajo) nuevasClases += ' v-abajo';
-    if (esDiagonal) nuevasClases += ' diagonal';
-    if (esCambioSiemens) nuevasClases += ' cambio-siemens';
-    
-    el.className = nuevasClases; 
-    
-    // Aplicamos el estado
-    if (estados[numEstado]) {
-        el.classList.add(estados[numEstado]);
+    // Mapear el valor a la clase CSS correspondiente
+    var nuevaClase = 'libreconI'; // por defecto
+    switch (nuevoEstadoStr) {
+        case "0": case "libre": novaClase = 'libreconI'; break; // (ojo con la variable, mantenemos tus nombres)
+        case "1": case "ocupado": nuevaClase = 'ocupado'; break;
+        case "2": case "libresinI": nuevaClase = 'libresinI'; break;
+        case "3": case "maniobra": nuevaClase = 'maniobra'; break;
+        case "4": case "libredeslizamiento": nuevaClase = 'libredeslizamiento'; break;
+        case "5": case "zonasinseñalizar": nuevaClase = 'zonasinseñalizar'; break;
+        case "6": case "cvmxcs": nuevaClase = 'CVMXCS'; break;
+        case "7": case "cvcras": nuevaClase = 'CVCRAS'; break;
+        case "8": case "bvacvsd": nuevaClase = 'BVACVSD'; break;
+        default: nuevaClase = 'libreconI'; break;
     }
+
+    // CORRECCIÓN PARA CORREGIR EL ASIGNADOR DEL DEFAULT (por si acaso):
+    if (nuevoEstadoStr === "0" || nuevoEstadoStr === "libre") nuevaClase = 'libreconI';
+
+    // VERIFICACIÓN CLAVE: Si el elemento YA tiene esa clase, no hacemos NADA (elimina el parpadeo)
+    if (el.classList.contains(nuevaClase) && 
+        !el.classList.contains('libreconI' === nuevaClase ? 'ocupado' : '')) { // Simplificado abajo:
+    }
+
+    // Forma limpia de verificar si ya tiene exactamente esa clase activa y ninguna otra de estado:
+    var clasesEstado = ['libreconI', 'ocupado', 'libresinI', 'maniobra', 'libredeslizamiento', 'zonasinseñalizar', 'CVMXCS', 'CVCRAS', 'BVACVSD'];
+    
+    // Verificamos si ya tiene la clase correcta aplicada
+    if (el.classList.contains(nuevaClase)) {
+        // Opcional: verificar que no tenga otra mezclada, pero con limpiar alcanza si evitamos repintar
+        var tieneOtra = false;
+        for (var i = 0; i < clasesEstado.length; i++) {
+            if (clasesEstado[i] !== nuevaClase && el.classList.contains(clasesEstado[i])) {
+                tieneOtra = true;
+                break;
+            }
+        }
+        if (!tieneOtra) return; // ¡Listo! Si ya la tiene y es la única, salimos sin tocar el DOM.
+    }
+
+    // Si cambió, limpiamos y aplicamos la nueva
+    el.classList.remove.apply(el.classList, clasesEstado);
+    el.classList.add(nuevaClase);
 }
 
    db.ref('cabinas/belgrano/vias').on('value', (snapshot) => {
