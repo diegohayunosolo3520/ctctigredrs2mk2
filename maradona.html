@@ -4338,8 +4338,6 @@ if (avSf6265) {
 
 // --- 2F PROCESAMIENTO SECTOR TIGRE ---
 
-// --- BLOQUE PRINCIPAL Y FUNCIONES DE TIGRE ---
-
 var dataTg = cabinas.tigre || cabinas["tigre"] || cabinas.tg;
 if (dataTg && dataTg.status) {
     var ledTg = document.getElementById('indicadortigre');
@@ -4353,93 +4351,106 @@ if (dataTg && dataTg.status) {
     }
 
     if (dataTg.vias) {
-        Object.keys(dataTg.vias).forEach(function(id) {
+          Object.keys(dataTg.vias).forEach(function(id) {
             var val = dataTg.vias[id];
             var idL = id.toLowerCase().trim();
             var el = document.getElementById(id) || document.getElementById(idL) || document.getElementById(id.toUpperCase()) || document.getElementById("c" + idL) || document.getElementById("cdv" + idL);
 
-            if(!el) {
-                if(idL === "ca-tig") el = document.getElementById("ca-Tg");
-                if(idL === "cz1-tig") el = document.getElementById("cb-Tg");
-                if(idL === "cz2-tig") el = document.getElementById("cz-Tg");
-                if(idL === "cz3-tig") el = document.getElementById("cb-Tg");
-                if(idL === "cz4-tig") el = document.getElementById("cz-Tg");
-            }
-            
-            if (el) {
-                setEstadoCircuito(el.id, val);
-            }
-        });
+             if(!el) {
+                    if(idL === "ca-tig") el = document.getElementById("ca-Tg");
+                    if(idL === "cz1-tig") el = document.getElementById("cb-Tg");
+                    if(idL === "cz2-tig") el = document.getElementById("cz-Tg");
+                    if(idL === "cz3-tig") el = document.getElementById("cb-Tg");
+                    if(idL === "cz4-tig") el = document.getElementById("cz-Tg");
+                }
+                
+                if (el) {
+                    setEstadoCircuito(el.id, val);
+                }
 
-        if(dataTg.vias["w71pm"] !== undefined) w71_estado = dataTg.vias["w71pm"];
-        if(dataTg.vias["w70pm"] !== undefined) w70_estado = dataTg.vias["w70pm"];
-        if(dataTg.vias["w73pm"] !== undefined) w73_estado = dataTg.vias["w73pm"];
-        if(dataTg.vias["w74pm"] !== undefined) w74_estado = dataTg.vias["w74pm"];
-        if(dataTg.vias["w75pm"] !== undefined) w75_estado = dataTg.vias["w75pm"];
-        if(dataTg.vias["w72pm"] !== undefined) w72_estado = dataTg.vias["w72pm"];
-    }
+            });
 
-    if (dataTg.senales) { 
+            if(dataTg.vias["w71pm"] !== undefined) w71_estado = dataTg.vias["w71pm"];
+            if(dataTg.vias["w70pm"] !== undefined) w70_estado = dataTg.vias["w70pm"];
+            if(dataTg.vias["w73pm"] !== undefined) w73_estado = dataTg.vias["w73pm"];
+            if(dataTg.vias["w74pm"] !== undefined) w74_estado = dataTg.vias["w74pm"];
+            if(dataTg.vias["w75pm"] !== undefined) w75_estado = dataTg.vias["w75pm"];
+            if(dataTg.vias["w72pm"] !== undefined) w72_estado = dataTg.vias["w72pm"];
+
+               }
+
+  if (dataTg.senales) { 
         procesarBloqueSenales(dataTg.senales); 
     }
 
-    if (dataTg.cambios) {
-        if (dataTg.cambios.W7071 !== undefined) {
-            let v = dataTg.cambios.W7071.toString();
-            curW71 = v; 
-            curW70 = v;
-        }
-        if (dataTg.cambios.W7473 !== undefined) {
-            let v = dataTg.cambios.W7473.toString();
-            curW73 = v; 
-            curW74 = v;
-        }
-        if (dataTg.cambios.W72 !== undefined) {
-            let v = dataTg.cambios.W72.toString();
-            curW72 = v; 
-        }
-        if (dataTg.cambios.W75 !== undefined) {
-            let v = dataTg.cambios.W75.toString();
-            curW75 = v; 
-        }
-        if (dataTg.cambios.AW7071 !== undefined) flagAveria_Tig7071 = parseInt(dataTg.cambios.AW7071);
-        if (dataTg.cambios.AW7473 !== undefined) flagAveria_Tig7473 = parseInt(dataTg.cambios.AW7473);
-        if (dataTg.cambios.AW72 !== undefined) flagAveria_Tig72 = parseInt(dataTg.cambios.AW72);
-        if (dataTg.cambios.AW75 !== undefined) flagAveria_Tig75 = parseInt(dataTg.cambios.AW75);
-    }   
+if (dataTg.cambios) {
+            if (dataTg.cambios.W7071 !== undefined) {
+                let v = dataTg.cambios.W7071.toString();
+                curW71 = v; 
+                curW70 = v;
+            }
+            if (dataTg.cambios.W7473 !== undefined) {
+                let v = dataTg.cambios.W7473.toString();
+                curW73 = v; 
+                curW74 = v;
+            }
+            if (dataTg.cambios.W72 !== undefined) {
+                let v = dataTg.cambios.W72.toString();
+                curW72 = v; 
+            }
+            if (dataTg.cambios.W75 !== undefined) {
+                let v = dataTg.cambios.W75.toString();
+                curW75 = v; 
+            }
+            if (dataTg.cambios.AW7071 !== undefined) flagAveria_Tig7071 = parseInt(dataTg.cambios.AW7071);
+            if (dataTg.cambios.AW7473 !== undefined) flagAveria_Tig7473 = parseInt(dataTg.cambios.AW7473);
+            if (dataTg.cambios.AW72 !== undefined) flagAveria_Tig72 = parseInt(dataTg.cambios.AW72);
+            if (dataTg.cambios.AW75 !== undefined) flagAveria_Tig75 = parseInt(dataTg.cambios.AW75);
 
-    // --- GESTIÓN DE AVERÍAS LED EN PANEL SUPERIOR ---
-    var avTg7071 = document.getElementById('AW7071');
-    var avTg7473 = document.getElementById('AW7473');
-    var avTg72 = document.getElementById('AW72');
-    var avTg75 = document.getElementById('AW75');
+            }   
 
-    if (avTg7071) {
-        if (flagAveria_Tig7071 == 1) avTg7071.classList.add('l-red');
-        else avTg7071.classList.remove('l-red');
-    }
-    if (avTg7473) {
-        if (flagAveria_Tig7473 == 1) avTg7473.classList.add('l-red');
-        else avTg7473.classList.remove('l-red');
-    }
-    if (avTg72) {
-        if (flagAveria_Tig72 == 1) avTg72.classList.add('l-red');
-        else avTg72.classList.remove('l-red');
-    }
-    if (avTg75) {
-        if (flagAveria_Tig75 == 1) avTg75.classList.add('l-red');
-        else avTg75.classList.remove('l-red');
-    }
+          // --- GESTIÓN DE AVERÍAS LED EN PANEL SUPERIOR (Fernando) - MOVIDO AQUÍ ---
+var avTg7071 = document.getElementById('AW7071');
+var avTg7473 = document.getElementById('AW7473');
+var avTg72 = document.getElementById('AW72');
+var avTg75 = document.getElementById('AW75');
 
+
+if (avTg7071) {
+    if (flagAveria_Tig7071 == 1) avTg7071.classList.add('l-red');
+    else avTg7071.classList.remove('l-red');
+}
+if (avTg7473) {
+    if (flagAveria_Tig7473 == 1) avTg7473.classList.add('l-red');
+    else avTg7473.classList.remove('l-red');
+}
+if (avTg72) {
+    if (flagAveria_Tig72 == 1) avTg72.classList.add('l-red');
+    else avTg72.classList.remove('l-red');
+}
+if (avTg75) {
+    if (flagAveria_Tig75 == 1) avTg75.classList.add('l-red');
+    else avTg75.classList.remove('l-red');
+}
+
+        // -------------------------------------------------------------------
+ 
+
+           
     var datosEncTg = dataTg.enclavamientos || dataTg;
     procesarEnclavamientosCambios(datosEncTg);
 
-    if (dataTg.itinerario_tigre !== undefined) {
-        actualizarCartelEspecifico('cartel_ruta_tigre', 'texto_ruta_tigre', dataTg.itinerario_tigre);
-    }
+if(dataTg.itinerario_tigre !== undefined) {
+                actualizarCartelEspecifico('cartel_ruta_tigre', 'texto_ruta_tigre', dataTg.itinerario_tigre);
+            }
 
-    var traficoTig = dataTg.trafico || cabinas.trafico_tigre || dataTg;
-    procesarDatosTrafico(traficoTig, "T");
+
+
+
+     var traficoTig = dataTg.trafico || cabinas.trafico_tigre || dataTg;
+     procesarDatosTrafico(traficoTig, "T");
+    
+
 
     var datosPanesTg = dataTg.panes || {};
     Object.keys(datosPanesTg).forEach(function(nombrePan) {
@@ -4450,69 +4461,71 @@ if (dataTg && dataTg.status) {
         }
     });
 
+
+
+
+
+
     if (typeof actualizarTableroTigre === 'function') {
         actualizarTableroTigre();
     }
 
-    if (typeof actualizarCircuitosTigre === 'function') {
-        actualizarCircuitosTigre();
-    }
+pW();
 
-    pW();
 }
 
-// --- FUNCIONES AUXILIARES ROBUSTAS ---
 
-function setEstadoCircuito(idElemento, estado) {
-    if (!idElemento) return;
-    
-    var el = document.getElementById(idElemento) || 
-             document.getElementById(String(idElemento).toUpperCase()) || 
-             document.getElementById(String(idElemento).toLowerCase());
+
+
+ // 3. SISTEMA DE VÍAS (CONECTADO A FIREBASE)
+    function setEstadoCircuito(idCircuito, numEstado) {
+    const el = document.getElementById(idCircuito);
     if (!el) return;
 
-    el.classList.remove(
-        'libreconI', 'ocupado', 'libresinI', 'maniobra', 
-        'libredeslizamiento', 'zonasinseñalizar', 'CVMXCS', 'CVCRAS', 'BVACVSD'
-    );
-
-    var mapaEstados = {
-        0: 'libreconI',         // Verde
-        1: 'ocupado',           // Rojo
-        2: 'libresinI',         // Amarillo
-        3: 'maniobra',          // Celeste
-        4: 'libredeslizamiento',// Violeta / Morado
-        5: 'zonasinseñalizar',  // Azul
-        6: 'CVMXCS',            // Amarillo con bordes blancos
-        7: 'CVCRAS',            // Amarillo con bordes verdes
-        8: 'BVACVSD'            // Baliza / Especial con textura
+    const estados = { 
+        3: 'via-fantasma', 0: 'libreconI', 1: 'ocupado', 2: 'libresinI', 
+        4: 'maniobra', 5: 'libredeslizamiento', 6: 'zonasinseñalizar',
+        7: 'CVMXCS', 8: 'CVCRAS', 9: 'BVACVSD'
     };
 
-    var numEstado = Number(estado);
-    if (mapaEstados.hasOwnProperty(numEstado)) {
-        el.classList.add(mapaEstados[numEstado]);
-    } else if (typeof estado === 'string' && estado.trim() !== "") {
-        el.classList.add(estado.trim());
-    }
-}
-
-function actualizarCartelEspecifico(idContenedor, idTexto, valorRuta) {
-    var contenedor = document.getElementById(idContenedor);
-    var texto = document.getElementById(idTexto);
+    // Mantenemos las clases estructurales críticas
+    const esArriba = el.classList.contains('v-arriba');
+    const esAbajo = el.classList.contains('v-abajo');
+    const esDiagonal = el.classList.contains('diagonal');
+    const esCambioSiemens = el.classList.contains('cambio-siemens'); // Nueva clase
     
-    if (!contenedor || !texto) return;
-
-    var valorLimpio = String(valorRuta).trim();
-    var esVacio = (valorRuta === null || valorRuta === undefined || valorLimpio === "" || valorLimpio === "0" || valorLimpio === "null");
-
-    if (!esVacio) {
-        texto.innerText = valorRuta;
-        contenedor.style.display = "flex";
-    } else {
-        texto.innerText = "";
-        contenedor.style.display = "none";
+    // Construimos la clase base preservando la estructura
+    let nuevasClases = 'via';
+    if (esArriba) nuevasClases += ' v-arriba';
+    if (esAbajo) nuevasClases += ' v-abajo';
+    if (esDiagonal) nuevasClases += ' diagonal';
+    if (esCambioSiemens) nuevasClases += ' cambio-siemens';
+    
+    el.className = nuevasClases; 
+    
+    // Aplicamos el estado
+    if (estados[numEstado]) {
+        el.classList.add(estados[numEstado]);
     }
 }
+
+   db.ref('cabinas/belgrano/vias').on('value', (snapshot) => {
+    const todosLosCircuitos = snapshot.val();
+    if (todosLosCircuitos) {
+        for (let id in todosLosCircuitos) {
+            // Asegúrate de llamar a la función corregida
+            setEstadoCircuito(id, todosLosCircuitos[id]);
+        }
+    }
+});
+
+    // Función para cambiar estado desde consola y guardar en Firebase
+    function enviarCambio(id, estado) {
+        db.ref('cabinas/belgrano/vias/' + id).set(estado);
+    }
+
+
+
 
 
         
@@ -4523,8 +4536,6 @@ function actualizarCartelEspecifico(idContenedor, idTexto, valorRuta) {
     actualizarTableroIsidro();
     actualizarTableroVictoria();
    actualizarTableroSanFernando();
-     actualizarTableroTigre();
-
 
 });  // FIN DE LA ESCUCHA FIREBASE GENERAL
 
